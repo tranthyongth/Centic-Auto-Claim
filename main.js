@@ -46,7 +46,7 @@ async function fetchTasks(token, proxy = null) {
         const taskResponse = response.data;
 
         const unclaimedTasks = [];
-        const categories = ['Daily Tasks', 'Social Tasks', 'Special Tasks', 'Bonus Reward'];
+        const categories = ['Daily Tasks', 'Daily login', 'Social Tasks', 'Special Tasks', 'Bonus Reward'];
         categories.forEach(category => {
             const tasks = taskResponse[category];
             if (Array.isArray(tasks)) {
@@ -55,6 +55,10 @@ async function fetchTasks(token, proxy = null) {
                         unclaimedTasks.push({ taskId: task._id, point: task.point });
                     }
                 });
+            } else if (tasks && typeof tasks === 'object') {
+                if (!tasks.claimed) {
+                    unclaimedTasks.push({ taskId: tasks._id, point: tasks.point });
+                }
             }
         });
 
@@ -88,7 +92,7 @@ async function claimUsers(token, proxy = null) {
     const axiosInstance = createAxiosInstance(proxy);
     try {
         await axiosInstance.post(url, {
-            "referralCode": "eJwNwQkRACAIBMBKp4gMcXgzGF928TDILa2UcFikqKsjGtCUvS63y_j7xwuX"
+            "referralCode": "eJwFwQERACAIA8BKgIirI9uRwfj-20t2e4ZrnLMqxHIIOLYLFsJVn6Z9_ucLwA"
         }, {
             headers: {
                 'x-apikey': token,
