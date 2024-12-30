@@ -36,7 +36,7 @@ function createAxiosInstance(proxy) {
 
 // Fetch tasks 
 async function fetchTasks(token, proxy = null) {
-    const url = 'https://develop.centic.io/dev/v3/centic-points/tasks';
+    const url = 'https://develop.centic.io/ctp-api/centic-points/tasks';
     const axiosInstance = createAxiosInstance(proxy);
 
     try {
@@ -72,7 +72,7 @@ async function fetchTasks(token, proxy = null) {
 
 // Fetch user 
 async function fetchUserRank(token, proxy = null) {
-    const url = 'https://develop.centic.io/dev/v3/centic-points/user-rank';
+    const url = 'https://develop.centic.io/ctp-api/centic-points/user-rank';
     const axiosInstance = createAxiosInstance(proxy);
 
     try {
@@ -88,7 +88,7 @@ async function fetchUserRank(token, proxy = null) {
     }
 }
 async function claimUsers(token, proxy = null) {
-    const url = 'https://develop.centic.io/dev/v3/centic-points/invites';
+    const url = 'https://develop.centic.io/ctp-api/centic-points/invites';
     const axiosInstance = createAxiosInstance(proxy);
     try {
         await axiosInstance.post(url, {
@@ -104,7 +104,7 @@ async function claimUsers(token, proxy = null) {
 };
 // Claim task 
 async function claimTasks(token, task, proxy = null) {
-    const url = 'https://develop.centic.io/dev/v3/centic-points/claim-tasks';
+    const url = 'https://develop.centic.io/ctp-api/centic-points/claim-tasks';
     const axiosInstance = createAxiosInstance(proxy);
 
     try {
